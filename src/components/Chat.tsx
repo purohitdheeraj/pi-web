@@ -25,7 +25,13 @@ function Chat() {
   };
 
   return (
-    <>
+    <div className="relative flex flex-col h-full">
+      <div className="relative h-52 text-[22px] flex flex-col overflow-y-auto pt-16  grow">
+        Hare Krishna
+      </div>
+
+
+
       <div className='mt-auto'>          
             <div   onFocus={() => {
                   setFocused(true);
@@ -56,7 +62,7 @@ function Chat() {
             
             </div>
     
-            <div className="px-5 mt-4 py-6 w-full geist-sans text-sm mx-auto max-w-1.5xl 2xl:max-w-[47rem]"><div><div className="t-label mx-auto text-center text-primary-foreground">By using Pi, you agree to our <a href="/terms" target="_blank" className="text-primary-600 underline text-secondary">Terms</a> and <a href="/privacy" target="_blank" className="text-primary-600 underline text-secondary">Privacy Policy</a>.</div></div></div></>
+            <div className="px-5 mt-4 py-6 w-full geist-sans text-sm mx-auto max-w-1.5xl 2xl:max-w-[47rem]"><div><div className="t-label mx-auto text-center text-primary-foreground">By using Pi, you agree to our <a href="/terms" target="_blank" className="text-primary-600 underline text-secondary">Terms</a> and <a href="/privacy" target="_blank" className="text-primary-600 underline text-secondary">Privacy Policy</a>.</div></div></div></div>
   )
 }
 

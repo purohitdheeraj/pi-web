@@ -94,6 +94,10 @@ body {
   font-family: var(--alpina);
 }
 
+.alpina-dense{
+  font-family: var(--alpina-dense);
+}
+
 .geist-sans{
   font-family: var(--font-geist-sans);
 }
