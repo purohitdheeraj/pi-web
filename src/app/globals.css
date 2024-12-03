@@ -86,3 +86,14 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.oracle{
+  font-family: var(--oracle);
+}
+.alpina{
+  font-family: var(--alpina);
+}
+
+.geist-sans{
+  font-family: var(--font-geist-sans);
+}

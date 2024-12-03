@@ -13,6 +13,12 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
+const alpina = localFont({
+  src: './fonts/alpina.otf',
+  variable: '--alpina',
+  weight: "100 900"
+});
+
 
 export const metadata: Metadata = {
   title: "Next APP",
@@ -28,9 +34,10 @@ export default function RootLayout({
     <html lang="en">
       <link rel="icon" href="/favicon.svg" sizes="any" />
       <body
-        className={`${geistSans.variable} ${geistMono.variable}  antialiased`}
+        className={`${alpina.variable} ${geistMono.variable} ${geistSans.variable}  antialiased`}
       >
         {children}
+      
       </body>
     </html>
   );
