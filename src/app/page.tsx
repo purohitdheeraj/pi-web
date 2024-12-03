@@ -1,10 +1,30 @@
+"use client";
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Sparkles, User } from 'lucide-react';
 import { VolumeX } from 'lucide-react';
+import useAutosizeTextArea from "../hooks/use-autosize-textarea";
+import { useRef, useState } from "react";
+
+
 
 export default function Home() {
+
+  const [value, setValue] = useState("");
+  const textAreaRef = useRef<HTMLTextAreaElement>(null);
+
+  useAutosizeTextArea(textAreaRef.current, value);
+
+  const handleChange = (evt: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const val = evt.target?.value;
+
+    console.log(val)
+
+    setValue(val);
+  };
+
+
   return (
     <>
     <div className='flex min-h-dvh'>
@@ -21,6 +41,9 @@ export default function Home() {
             className='flex-grow outline-none  shadow-none h-full resize-none  bg-white overflow-hidden  text-[16px]'
             rows={1}
             placeholder='Talk with Pi'
+            onChange={handleChange}
+            ref={textAreaRef}
+            value={value}
           />
       
           <button aria-label="Submit text" className="flex border items-center justify-center rounded-full text-neutral-600 bg-neutral-50 p-1.5  transition-colors duration-300 mb-1" type="button" ><svg xmlns="http://www.w3.org/2000/svg" width="13" height="16" fill="currentColor"><path  d="M.852 7.648a1.2 1.2 0 0 1 0-1.696l4.8-4.8a1.2 1.2 0 0 1 1.696 0l4.8 4.8a1.2 1.2 0 1 1-1.697 1.696L7.7 4.897V14a1.2 1.2 0 0 1-2.4 0V4.897L2.548 7.648a1.2 1.2 0 0 1-1.696 0Z" clipRule="evenodd"></path></svg></button>

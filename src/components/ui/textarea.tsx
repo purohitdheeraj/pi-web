@@ -10,17 +10,6 @@ const Textarea = React.forwardRef<
   React.ComponentProps<"textarea">
 >(({ className, ...props }, ref) => {
 
-  const [value, setValue] = useState("");
-  const textAreaRef = useRef<HTMLTextAreaElement>(null);
-
-  useAutosizeTextArea(textAreaRef.current, value);
-
-  const handleChange = (evt: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const val = evt.target?.value;
-
-    setValue(val);
-  };
-
 
   return (
     <textarea
@@ -28,10 +17,8 @@ const Textarea = React.forwardRef<
         "flex w-full rounded-md bg-transparent px-3 py-2 text-base shadow-sm placeholder:text-muted-foreground  disabled:cursor-not-allowed disabled:opacity-50 ",
         className
       )}
-      ref={textAreaRef}
+      ref={ref}
       {...props}
-      onChange={handleChange}
-      value={value}
     />
   )
 })
