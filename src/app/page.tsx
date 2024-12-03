@@ -13,6 +13,7 @@ export default function Home() {
 
   const [value, setValue] = useState("");
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
+  const [focused, setFocused] = useState(false);
 
   useAutosizeTextArea(textAreaRef.current, value);
 
@@ -36,17 +37,33 @@ export default function Home() {
       <div className=' mx-auto flex-grow flex flex-col py-8 max-w-[712px]'>
         <div className='mt-auto'>
             
-        <div className='flex items-end gap-2 w-full min-h-6 shadow-md bg-white rounded-[30px] px-6 py-2'>
+        <div className={`flex items-end gap-2 w-full min-h-6 ${focused ? 'border' : 'shadow-[0px_12px_32px_-6px_#e4dbc8,0px_2px_16px_-6px_#0000001a]'} bg-white rounded-[30px] px-6 py-2 transition-shadow duration-300`}>
           <Textarea
-            className='flex-grow outline-none  shadow-none h-full resize-none  bg-white overflow-hidden  text-[16px]'
+            className='flex-grow outline-none shadow-none h-full resize-none bg-white overflow-hidden text-lg'
             rows={1}
             placeholder='Talk with Pi'
             onChange={handleChange}
             ref={textAreaRef}
+            onFocus={() => {
+              setFocused(true);
+            }}
+            onMouseOver={()=>{
+              setFocused(true);
+            }}
+            onMouseLeave={()=>{
+              setFocused(false);
+            }}
+            onBlur={() => {
+              setFocused(false);
+            }}
             value={value}
           />
-      
-          <button aria-label="Submit text" className="flex border items-center justify-center rounded-full text-neutral-600 bg-neutral-50 p-1.5  transition-colors duration-300 mb-1" type="button" ><svg xmlns="http://www.w3.org/2000/svg" width="13" height="16" fill="currentColor"><path  d="M.852 7.648a1.2 1.2 0 0 1 0-1.696l4.8-4.8a1.2 1.2 0 0 1 1.696 0l4.8 4.8a1.2 1.2 0 1 1-1.697 1.696L7.7 4.897V14a1.2 1.2 0 0 1-2.4 0V4.897L2.548 7.648a1.2 1.2 0 0 1-1.696 0Z" clipRule="evenodd"></path></svg></button>
+            
+          <button aria-label="Submit text" className="flex border items-center justify-center rounded-full text-neutral-600 bg-neutral-50 p-1.5 transition-colors duration-500 mb-1" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="16" fill="currentColor">
+              <path d="M.852 7.648a1.2 1.2 0 0 1 0-1.696l4.8-4.8a1.2 1.2 0 0 1 1.696 0l4.8 4.8a1.2 1.2 0 1 1-1.697 1.696L7.7 4.897V14a1.2 1.2 0 0 1-2.4 0V4.897L2.548 7.648a1.2 1.2 0 0 1-1.696 0Z" clipRule="evenodd"></path>
+            </svg>
+          </button>
         </div>
         </div>
 
