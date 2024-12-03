@@ -13,16 +13,17 @@ export default function Home() {
         Sidebar
 
       </div>
-      <div className='border mx-auto flex-grow flex flex-col py-8 max-w-[712px]'>
-        <div className='mt-auto h-max'>
+      <div className=' mx-auto flex-grow flex flex-col py-8 max-w-[712px]'>
+        <div className='mt-auto'>
             
-        <div className='flex items-end w-full h-full border bg-white rounded-[30px] px-4 py-2'>
+        <div className='flex items-end gap-2 w-full min-h-6 shadow-md bg-white rounded-[30px] px-6 py-2'>
           <Textarea
-            className='flex-grow outline-none border-none shadow-none min-h-10 h-full  resize-none  bg-white overflow-hidden  text-[16px]'
+            className='flex-grow outline-none  shadow-none h-full resize-none  bg-white overflow-hidden  text-[16px]'
+            rows={1}
             placeholder='Talk with Pi'
           />
       
-          <button aria-label="Submit text" className="flex items-center justify-center rounded-full p-1.5 text-neutral-600 bg-neutral-50 m-2 transition-colors duration-300" type="button" ><svg xmlns="http://www.w3.org/2000/svg" width="13" height="16" fill="currentColor"><path  d="M.852 7.648a1.2 1.2 0 0 1 0-1.696l4.8-4.8a1.2 1.2 0 0 1 1.696 0l4.8 4.8a1.2 1.2 0 1 1-1.697 1.696L7.7 4.897V14a1.2 1.2 0 0 1-2.4 0V4.897L2.548 7.648a1.2 1.2 0 0 1-1.696 0Z" clip-rule="evenodd"></path></svg></button>
+          <button aria-label="Submit text" className="flex border items-center justify-center rounded-full text-neutral-600 bg-neutral-50 p-1.5  transition-colors duration-300 mb-1" type="button" ><svg xmlns="http://www.w3.org/2000/svg" width="13" height="16" fill="currentColor"><path  d="M.852 7.648a1.2 1.2 0 0 1 0-1.696l4.8-4.8a1.2 1.2 0 0 1 1.696 0l4.8 4.8a1.2 1.2 0 1 1-1.697 1.696L7.7 4.897V14a1.2 1.2 0 0 1-2.4 0V4.897L2.548 7.648a1.2 1.2 0 0 1-1.696 0Z" clipRule="evenodd"></path></svg></button>
         </div>
         </div>
 
