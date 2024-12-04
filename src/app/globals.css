@@ -6,6 +6,8 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+
+
 @layer base {
   :root {
     --background: 34 62% 95%;
@@ -101,3 +103,27 @@ body {
 .geist-sans{
   font-family: var(--font-geist-sans);
 }
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+
+#__next {
+  height: 100%; /* For Next.js */
+}
+
+
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+

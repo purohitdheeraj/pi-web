@@ -40,9 +40,12 @@ export default function RootLayout({
     <html lang="en">
       <link rel="icon" href="/favicon.svg" sizes="any" />
       <body
-        className={`${alpina.variable} ${alpinaDense.variable} ${geistMono.variable} ${geistSans.variable}  antialiased`}
+        className={`${alpina.variable} ${alpinaDense.variable} ${geistMono.variable} ${geistSans.variable}  antialiased overflow-y-auto`}
       >
+
+<div className="h-full flex flex-col">
         {children}
+</div>
       
       </body>
     </html>
