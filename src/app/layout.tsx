@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import Chat from '@/components/Chat';
 import ChatSidebar from "@/components/ChatSidebar";
+
+
 
 import "./globals.css";
 
@@ -45,10 +46,12 @@ export default function RootLayout({
       <body
         className={`${alpina.variable} ${alpinaDense.variable} ${geistMono.variable} ${geistSans.variable} antialiased overflow-y-auto`}
       >
-        <div className='flex flex-wrap alpina h-full overflow-y-auto'>
+        <div className='flex  alpina h-full w-full overflow-y-auto'>
           <ChatSidebar />
+
           {children}
         </div>
+
       </body>
     </html>
   );
