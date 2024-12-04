@@ -3,7 +3,7 @@ import useAutosizeTextArea from "../hooks/use-autosize-textarea";
 import { useRef, useState, useEffect } from "react";
 import Topics from "@/components/Topics";
 import HistoryCard from "@/components/HistoryCard";
-import { X , Sparkles} from 'lucide-react';
+import { X , Sparkles, ConstructionIcon} from 'lucide-react';
 import { Button } from "./ui/button";
 
 const ChatSidebar = () => {
@@ -11,6 +11,7 @@ const ChatSidebar = () => {
   const [greeting, setGreeting] = useState<string>("");
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false); // State to control mobile sidebar
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
+  
 
   useAutosizeTextArea(textAreaRef.current, value);
 
@@ -25,6 +26,7 @@ const ChatSidebar = () => {
     }
   };
 
+  
   useEffect(() => {
     setGreeting(getGreeting());
   }, []);
@@ -33,7 +35,7 @@ const ChatSidebar = () => {
     <>
       {/* Sidebar for larger screens */}
       <div className="hidden lg:block w-[380px] border-r text-2xl overflow-y-scroll no-scrollbar p-8 h-[100vh] bg-border/30 gap-2">
-        <h2>
+        <h2 className="alpina-dense text-3xl">
           {greeting},
           <span className="italic ml-1">Mani</span>
         </h2>
@@ -43,7 +45,7 @@ const ChatSidebar = () => {
 
       {/* Mobile Sidebar */}
       {isMobileSidebarOpen && (
-        <div className="fixed overflow-auto no-scrollbar mt-4 inset-0 border shadow-lg bg-[#F7EFE3] rounded-l-2xl rounded-r-2xl z-50 p-6 pt-16">
+        <div className="fixed overflow-auto no-scrollbar mt-4 inset-0 border shadow-lg bg-[#F7EFE3] rounded-l-2xl rounded-r-2xl z-50 p-6 pt-16 ">
           <Button
             variant="ghost"
             size="icon"
