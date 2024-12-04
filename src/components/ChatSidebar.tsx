@@ -1,19 +1,14 @@
 "use client";
-import useAutosizeTextArea from "../hooks/use-autosize-textarea";
-import { useRef, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Topics from "@/components/Topics";
 import HistoryCard from "@/components/HistoryCard";
-import { X , Sparkles, ConstructionIcon} from 'lucide-react';
+import { X , Sparkles} from 'lucide-react';
 import { Button } from "./ui/button";
 
 const ChatSidebar = () => {
-  const [value, setValue] = useState("");
   const [greeting, setGreeting] = useState<string>("");
-  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false); // State to control mobile sidebar
-  const textAreaRef = useRef<HTMLTextAreaElement>(null);
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false); 
   
-
-  useAutosizeTextArea(textAreaRef.current, value);
 
   const getGreeting = () => {
     const hours = new Date().getHours();

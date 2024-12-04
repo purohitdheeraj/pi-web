@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import ChatSidebar from "@/components/ChatSidebar";
 
-
-
 import "./globals.css";
 
 const geistSans = localFont({
@@ -12,11 +10,6 @@ const geistSans = localFont({
   weight: "100 900",
 });
 
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
 
 const alpina = localFont({
   src: './fonts/alpina.otf',
@@ -44,7 +37,7 @@ export default function RootLayout({
     <html lang="en">
       <link rel="icon" href="/favicon.svg" sizes="any" />
       <body
-        className={`${alpina.variable} ${alpinaDense.variable} ${geistMono.variable} ${geistSans.variable} antialiased overflow-y-auto`}
+        className={`${alpina.variable} ${alpinaDense.variable} ${geistSans.variable} antialiased overflow-y-auto`}
       >
         <div className='flex  alpina h-full w-full overflow-y-auto'>
           <ChatSidebar />

@@ -1,8 +1,10 @@
-import Chat from "@/components/Chat";
-import Topic from "@/components/Topic";
+import dynamic from 'next/dynamic';
+
+const Chat = dynamic(() => import('@/components/Chat'));
+const Topic = dynamic(() => import('@/components/Topic'));
 
 const BlogPost = async({params}) => {
-  const { slug } = await params
+  const { slug } = await params;
 
   return(
     <>

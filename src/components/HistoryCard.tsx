@@ -8,7 +8,7 @@ const HistoryCard = () => {
             <div className="pr-4 shrink-0">
               <Image src={'https://res.cloudinary.com/dncfedmdx/image/upload/v1733313102/pi-web/chat_flfpqb.svg'} alt='Chat' width={56} height={56} />
             </div>
-            <div><h2 className="font-condensed font-bold text-h-m text-primary-700">Download your Pi conversation history</h2><a className="mt-4 text-sm geist-sans block text-secondary" href="/profile/manage-history">Manage history</a></div>
+            <div><h2 className="font-condensed font-bold text-h-m text-primary-700">Download your Pi conversation history</h2><a className="mt-4 text-sm geist-sans block text-secondary" href="/">Manage history</a></div>
             
           </div>
     </>

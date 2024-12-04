@@ -58,8 +58,8 @@ const Topics = () => {
                 className="absolute inset-0 w-full h-full object-cover rounded-xl"
                 alt="Background"
                 loading='lazy'
-                width={800}   // Adjust width based on your layout needs
-                height={400}  // Adjust height based on your layout needs
+                width={800}   
+                height={400}  
                 quality={100} 
               />
 
