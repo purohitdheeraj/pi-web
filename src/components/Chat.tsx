@@ -92,13 +92,10 @@ function Chat({isTopicPage}: {isTopicPage?: boolean}) {
   return (
     <div className="relative flex flex-col h-full w-full">
       
-      {isTopic ? (<>
-        Topic Page
-      </>):(
-
-        <>
-          {/* Chat Messages */}
-      <div
+      
+      {/* Chat Messages */}
+      {!isTopicPage && (<>
+        <div
         ref={chatContainerRef}
         className="relative min-h-52 h-52 mt-4 text-[22px] w-full flex flex-col overflow-y-auto no-scrollbar pt-16 flex-grow space-y-4 px-4 border-t-transparent"
       >
@@ -121,8 +118,9 @@ function Chat({isTopicPage}: {isTopicPage?: boolean}) {
           </div>
         ))}
       </div>
-        </>
-      )}
+      
+      </>)}
+      
       
 
       <br className="mt-4" />
@@ -170,11 +168,11 @@ function Chat({isTopicPage}: {isTopicPage?: boolean}) {
         <div>
           <div className="t-label mx-auto text-center text-primary-foreground">
             By using Pi, you agree to our{" "}
-            <a href="/terms" target="_blank" className="text-primary-600 underline text-secondary">
+            <a href="https://pi.ai/policy#terms" target="_blank" className="text-primary-600 underline text-secondary">
               Terms
             </a>{" "}
             and{" "}
-            <a href="/privacy" target="_blank" className="text-primary-600 underline text-secondary">
+            <a href="https://pi.ai/policy#privacy" target="_blank" className="text-primary-600 underline text-secondary">
               Privacy Policy
             </a>
             .

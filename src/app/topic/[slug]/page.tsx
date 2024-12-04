@@ -1,4 +1,5 @@
 import Chat from "@/components/Chat";
+import Topic from "@/components/Topic";
 
 const BlogPost = async({params}) => {
   const { slug } = await params
@@ -6,8 +7,10 @@ const BlogPost = async({params}) => {
   return(
     <>
      <div className='mx-auto w-full flex-grow flex flex-col max-w-[844px] px-4 relative h-full overflow-y-auto'>
-      {/* {slug} */}
+      <Topic slug={slug}/>
+      <div>
       <Chat isTopicPage={true}/>
+      </div>
     </div>
     </>
   )

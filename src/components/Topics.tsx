@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const Topics = () => {
   const topics = [
-    { title: "Let’s write a short story", background: 'https://res.cloudinary.com/dncfedmdx/image/upload/v1733313102/pi-web/topic1_re07wr.webp', slug: 'write-short-story' },
+    { title: "Let's write a short story", background: 'https://res.cloudinary.com/dncfedmdx/image/upload/v1733313102/pi-web/topic1_re07wr.webp', slug: 'write-short-story' },
     { title: "Write me a poem, Pi", background: 'https://res.cloudinary.com/dncfedmdx/image/upload/v1733313103/pi-web/topic2_bf7lxz.webp', slug: 'write-poem' },
     { title: "Relationship advice", background: 'https://res.cloudinary.com/dncfedmdx/image/upload/v1733313103/pi-web/topic3_lobsd9.webp', slug: 'relationship-advice' },
     { title: "Roleplay your next job interview with Pi", background: 'https://res.cloudinary.com/dncfedmdx/image/upload/v1733313103/pi-web/topic4_gx1zsz.webp', slug: 'job-interview-roleplay' },
