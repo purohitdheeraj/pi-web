@@ -1,27 +1,21 @@
 'use client';
 import Image from 'next/image';
-import topic1 from '../../public/assets/topic1.webp';
-import topic2 from '../../public/assets/topic2.webp';
-import topic3 from '../../public/assets/topic3.webp';
-import topic4 from '../../public/assets/topic4.webp';
-import topic5 from '../../public/assets/topic5.webp';
-import topic6 from '../../public/assets/topic6.webp';
-import topic7 from '../../public/assets/topic7.webp';
+
 
 const Topics = () => {
   const topics = [
-    { title: "Let’s write a short story", background: topic1 },
-    { title: "Write me a poem, Pi", background: topic2 },
-    { title: "Relationship advice", background: topic3 },
-    { title: "Roleplay your next job interview with Pi", background: topic4 },
-    { title: "How to be a mentor", background: topic5 },
-    { title: "Jealousy vs. envy", background: topic6 },
-    { title: "Let Pi pick your DJ name", background: topic7 },
-    { title: "Write that novel!", background: topic1 },
-    { title: "Tech advice for newcomers", background: topic2 },
-    { title: "How to start a podcast", background: topic3 },
-    { title: "Mindfulness techniques", background: topic4 },
-    { title: "Boosting creativity", background: topic5 },
+    { title: "Let’s write a short story", background: 'https://res.cloudinary.com/dncfedmdx/image/upload/v1733313102/pi-web/topic1_re07wr.webp' },
+    { title: "Write me a poem, Pi", background: 'https://res.cloudinary.com/dncfedmdx/image/upload/v1733313103/pi-web/topic2_bf7lxz.webp' },
+    { title: "Relationship advice", background: 'https://res.cloudinary.com/dncfedmdx/image/upload/v1733313103/pi-web/topic3_lobsd9.webp' },
+    { title: "Roleplay your next job interview with Pi", background: 'https://res.cloudinary.com/dncfedmdx/image/upload/v1733313103/pi-web/topic4_gx1zsz.webp' },
+    { title: "How to be a mentor", background: 'https://res.cloudinary.com/dncfedmdx/image/upload/v1733313103/pi-web/topic5_kjucqb.webp' },
+    { title: "Jealousy vs. envy", background: 'https://res.cloudinary.com/dncfedmdx/image/upload/v1733313103/pi-web/topic6_ps2l0a.webp' },
+    { title: "Let Pi pick your DJ name", background: 'https://res.cloudinary.com/dncfedmdx/image/upload/v1733313103/pi-web/topic7_i7gvs3.webp' },
+    { title: "Write that novel!", background: 'https://res.cloudinary.com/dncfedmdx/image/upload/v1733313102/pi-web/topic1_re07wr.webp' },
+    { title: "Tech advice for newcomers", background: 'https://res.cloudinary.com/dncfedmdx/image/upload/v1733313103/pi-web/topic2_bf7lxz.webp' },
+    { title: "How to start a podcast", background: 'https://res.cloudinary.com/dncfedmdx/image/upload/v1733313103/pi-web/topic3_lobsd9.webp' },
+    { title: "Mindfulness techniques", background: 'https://res.cloudinary.com/dncfedmdx/image/upload/v1733313103/pi-web/topic4_gx1zsz.webp' },
+    { title: "Boosting creativity", background: 'https://res.cloudinary.com/dncfedmdx/image/upload/v1733313103/pi-web/topic5_kjucqb.webp' },
   ];
 
   const getItemClasses = (index:number) => {
@@ -52,7 +46,7 @@ const Topics = () => {
   };
 
   return (
-    <div className="grid grid-cols-2 gap-4 overflow-y-auto bg-[#eee6d7]">
+    <div className="grid grid-cols-2 gap-4  rounded-lg overflow-y-auto bg-[#eee6d7]">
       {topics.map((topic, index) => {
         return (
           <div
@@ -65,6 +59,9 @@ const Topics = () => {
                 className="absolute inset-0 w-full h-full object-cover rounded-xl"
                 alt="Background"
                 loading='lazy'
+                width={800}   // Adjust width based on your layout needs
+                height={400}  // Adjust height based on your layout needs
+                quality={100} 
               />
 
               <div className="absolute inset-0 bg-black/60 opacity-50 rounded-xl"></div>
