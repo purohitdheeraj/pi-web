@@ -4,10 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { ArrowUp } from "lucide-react";
 
-function Chat() {
+function Chat({isTopicPage}: {isTopicPage?: boolean}) {
   const [value, setValue] = useState("");
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const [focused, setFocused] = useState(false);
+  const [isTopic, setIsTopic] = useState(isTopicPage);
 
   const [messages, setMessages] = useState([
     {
@@ -27,6 +28,7 @@ function Chat() {
   }, [messages]);
 
   const handleChange = (evt: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setIsTopic(false);
     setValue(evt.target?.value);
   };
 
@@ -89,7 +91,13 @@ function Chat() {
 
   return (
     <div className="relative flex flex-col h-full w-full">
-      {/* Chat Messages */}
+      
+      {isTopic ? (<>
+        Topic Page
+      </>):(
+
+        <>
+          {/* Chat Messages */}
       <div
         ref={chatContainerRef}
         className="relative min-h-52 h-52 mt-4 text-[22px] w-full flex flex-col overflow-y-auto no-scrollbar pt-16 flex-grow space-y-4 px-4 border-t-transparent"
@@ -113,6 +121,9 @@ function Chat() {
           </div>
         ))}
       </div>
+        </>
+      )}
+      
 
       <br className="mt-4" />
 
