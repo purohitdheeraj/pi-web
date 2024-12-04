@@ -40,7 +40,7 @@ export default function Home() {
         Good evening, 
         
         <span className='italic'>
-          Dheeraj Purohit
+          Mani
         </span>
         </h2>
 

@@ -129,7 +129,7 @@ function Chat() {
           onBlur={() => setFocused(false)}
         >
           <Textarea
-            className="flex-grow outline-none shadow-none h-full resize-none bg-white overflow-hidden text-base"
+            className="flex-grow text-2xl outline-none shadow-none h-full resize-none bg-white overflow-hidden "
             rows={1}
             placeholder="Talk with Pi"
             onChange={handleChange}

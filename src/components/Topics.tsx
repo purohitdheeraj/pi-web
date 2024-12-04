@@ -52,7 +52,7 @@ const Topics = () => {
   };
 
   return (
-    <div className="grid grid-cols-2 gap-4 overflow-y-auto">
+    <div className="grid grid-cols-2 gap-4 overflow-y-auto bg-[#eee6d7]">
       {topics.map((topic, index) => {
         return (
           <div
@@ -64,6 +64,7 @@ const Topics = () => {
                 src={topic.background}
                 className="absolute inset-0 w-full h-full object-cover rounded-xl"
                 alt="Background"
+                loading='lazy'
               />
 
               <div className="absolute inset-0 bg-black/60 opacity-50 rounded-xl"></div>
