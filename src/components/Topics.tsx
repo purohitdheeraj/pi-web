@@ -58,7 +58,7 @@ const Topics = () => {
         return (
           <div
             key={index}
-            className={`mb-6 flex items-center rounded-xl shadow-[0px_12px_32px_-6px_#e4dbc8,0px_2px_16px_-6px_#0000001a] transition-all duration-150 hover:scale-95 ${getItemClasses(index)}`}
+            className={`mb-6 flex items-center rounded-xl shadow-[0px_12px_32px_-6px_#e4dbc8,0px_2px_16px_-6px_#0000001a] transition-all cursor-pointer duration-150 hover:scale-95 ${getItemClasses(index)}`}
           >
             <div className="pr-4 shrink-0 relative min-h-[160px] w-full h-full flex flex-col shadow-inner">
               <Image

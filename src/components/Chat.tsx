@@ -13,7 +13,7 @@ function Chat() {
 
   // Messages array with roles
   const [messages, setMessages] = useState([
-    { role: "assistant", content: `Hey there, great to meet you. \nI'm Pi, your personal AI. My goal is to be useful, friendly, and fun. Ask me for advice, for answers, or let's talk about whatever's on your mind. How's your day going?` }
+    { role: "assistant", content: `Hey there, great to meet you. I'm Pi, your personal AI.\n\n My goal is to be useful, friendly, and fun. Ask me for advice, for answers, or let's talk about whatever's on your mind.\n\n How's your day going?` }
   ]);
 
   useAutosizeTextArea(textAreaRef.current, value);
@@ -56,7 +56,7 @@ function Chat() {
         {messages.map((message, index) => (
           <div
         key={index}
-        className={`flex items-start  ${
+        className={`flex whitespace-pre-wrap  items-start  ${
           message.role === "user" ? "justify-end" : "justify-start"
         }`}
           >
