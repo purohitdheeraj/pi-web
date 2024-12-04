@@ -18,7 +18,8 @@ export default function Home() {
   const [value, setValue] = useState("");
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const [focused, setFocused] = useState(false);
-
+  const apiKey = process.env.NEXT_PUBLIC_OPEN_AI_API_KEY;
+  
   useAutosizeTextArea(textAreaRef.current, value);
 
   const handleChange = (evt: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -27,6 +28,7 @@ export default function Home() {
     console.log(val)
 
     setValue(val);
+
   };
 
 

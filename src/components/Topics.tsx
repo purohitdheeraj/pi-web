@@ -65,7 +65,6 @@ const Topics = () => {
                 src={topic.background}
                 className="absolute inset-0 w-full h-full object-cover rounded-xl"
                 alt="Background"
-                layout="fill"
               />
 
               <div className="absolute inset-0 bg-black/60 opacity-50 rounded-xl"></div>

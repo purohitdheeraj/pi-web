@@ -1,46 +1,84 @@
 "use client";
-import useAutosizeTextArea from "../hooks/use-autosize-textarea";
-import { useRef, useState } from "react";
-import { Button } from '@/components/ui/button';
-import { Textarea } from '@/components/ui/textarea';
-import { Sparkles, User } from 'lucide-react';
-import { ArrowUp } from 'lucide-react';
+import { useRef, useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { ArrowUp } from "lucide-react";
 
 function Chat() {
   const [value, setValue] = useState("");
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const [focused, setFocused] = useState(false);
 
-  // Messages array with roles
   const [messages, setMessages] = useState([
-    { role: "assistant", content: `Hey there, great to meet you. I'm Pi, your personal AI.\n\n My goal is to be useful, friendly, and fun. Ask me for advice, for answers, or let's talk about whatever's on your mind.\n\n How's your day going?` }
+    {
+      role: "assistant",
+      content: `Hey there, great to meet you. I'm Pi, your personal AI.\n\n My goal is to be useful, friendly, and fun. Ask me for advice, for answers, or let's talk about whatever's on your mind.\n\n How's your day going?`,
+    },
   ]);
 
-  useAutosizeTextArea(textAreaRef.current, value);
+  // Reference to the chat container
+  const chatContainerRef = useRef<HTMLDivElement>(null);
+
+  // Scroll to bottom whenever the messages array is updated
+  useEffect(() => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
+  }, [messages]);
 
   const handleChange = (evt: React.ChangeEvent<HTMLTextAreaElement>) => {
     setValue(evt.target?.value);
   };
 
-  const handleSend = () => {
-    if (!value.trim()) return; // Basic validation
-
+  const handleSend = async () => {
+    if (!value.trim()) return; 
+  
     // Add the user message to the chat
     setMessages((prevMessages) => [
       ...prevMessages,
       { role: "user", content: value.trim() },
     ]);
-
-    setValue(""); // Clear the input field
-
-    // Mock assistant response (remove or replace with actual API call)
-    setTimeout(() => {
+  
+    setValue(""); 
+  
+    try {
+      const res = await fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${process.env.NEXT_PUBLIC_OPEN_AI_API_KEY}`, 
+        },
+        body: JSON.stringify({
+          model: "gpt-3.5-turbo", 
+          messages: [
+            ...messages, 
+            { role: "user", content: value.trim() },  
+          ],
+        }),
+      });
+  
+      const data = await res.json();
+      if (data.choices && data.choices[0]) {
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { role: "assistant", content: data.choices[0].message.content }, 
+        ]);
+      } else {
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { role: "assistant", content: "Sorry, I couldn't respond." },
+        ]);
+      }
+    } catch (error) {
+      console.error("Error calling OpenAI API:", error);
       setMessages((prevMessages) => [
         ...prevMessages,
-        { role: "assistant", content: "Interesting! Tell me more." },
+        { role: "assistant", content: "Something went wrong. Please try again." },
       ]);
-    }, 1000);
+    }
   };
+  
+  
 
   const handleKeyPress = (evt: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (evt.key === "Enter" && !evt.shiftKey) {
@@ -50,31 +88,33 @@ function Chat() {
   };
 
   return (
-    <div className="relative flex flex-col  h-full w-full ">
+    <div className="relative flex flex-col h-full w-full">
       {/* Chat Messages */}
-      <div className="relative min-h-52 h-52 mt-4 text-[22px] w-full  flex flex-col overflow-y-auto no-scrollbar  pt-16 flex-grow space-y-4 px-4 border-t-transparent">
+      <div
+        ref={chatContainerRef}
+        className="relative min-h-52 h-52 mt-4 text-[22px] w-full flex flex-col overflow-y-auto no-scrollbar pt-16 flex-grow space-y-4 px-4 border-t-transparent"
+      >
         {messages.map((message, index) => (
           <div
-        key={index}
-        className={`flex whitespace-pre-wrap  items-start  ${
-          message.role === "user" ? "justify-end" : "justify-start"
-        }`}
+            key={index}
+            className={`flex whitespace-pre-wrap items-start ${
+              message.role === "user" ? "justify-end" : "justify-start"
+            }`}
           >
-        {/* {message.role === "assistant" && (
-          <User className="mr-2 text-primary" />
-        )} */}
-        <div
-          className={` p-3 rounded-lg ${
-            message.role === "user"
-          ? "max-w-[70%] bg-primary-foreground/5 "
-          : " max-w-[100%]"
-          }`}
-        >
-          {message.content}
-        </div>
+            <div
+              className={`p-3 rounded-lg ${
+                message.role === "user"
+                  ? "max-w-[70%] bg-primary-foreground/5"
+                  : "max-w-[100%]"
+              }`}
+            >
+              {message.content}
+            </div>
           </div>
         ))}
       </div>
+
+      <br className="mt-4" />
 
       {/* Input Field */}
       <div className="mt-auto px-4 py-2">
@@ -103,13 +143,11 @@ function Chat() {
             aria-label="Submit text"
             disabled={!value.trim()}
             onClick={handleSend}
-            className={`flex shrink-0 
-              ${
-                value.trim()
-                  ? "bg-secondary text-white hover:bg-secondary hover:text-white"
-                  : "bg-secondary-foreground/10 text-neutral-600"
-              }
-               items-center border-thin justify-center rounded-full   p-2.5  transition-colors duration-500 mb-1`}
+            className={`flex shrink-0 ${
+              value.trim()
+                ? "bg-secondary text-white hover:bg-secondary hover:text-white"
+                : "bg-secondary-foreground/10 text-neutral-600"
+            } items-center border-thin justify-center rounded-full p-2.5 transition-colors duration-500 mb-1`}
           >
             <ArrowUp height={16} width={16} className="shrink-0" strokeWidth={3} />
           </Button>
