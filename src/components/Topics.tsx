@@ -22,7 +22,6 @@ const Topics = () => {
     { title: "How to start a podcast", background: topic3 },
     { title: "Mindfulness techniques", background: topic4 },
     { title: "Boosting creativity", background: topic5 },
-    { title: "Boosting creativity", background: topic6 },
   ];
 
   const getItemClasses = (index:number) => {
