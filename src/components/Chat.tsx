@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { ArrowUp } from "lucide-react";
 import classNames from "classnames";
+import { Fade } from "react-awesome-reveal";
 
 function Chat({ isTopicPage }: { isTopicPage?: boolean }) {
   const [chatState, setChatState] = useState({
@@ -124,8 +125,10 @@ function Chat({ isTopicPage }: { isTopicPage?: boolean }) {
         <div
           ref={chatContainerRef}
           className="relative min-h-52 h-52 mt-4 text-[22px] w-full flex flex-col overflow-y-auto no-scrollbar pt-16 flex-grow space-y-4 px-4 border-t-transparent"
-        >
+          >
+         <Fade  triggerOnce>
           {messagesMemo}
+          </Fade>
         </div>
       )}
 

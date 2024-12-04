@@ -2,6 +2,8 @@
 import { Rocket, HandshakeIcon, Ship, Pen, ArrowLeft } from 'lucide-react';
 import Image from "next/image";
 import Link from 'next/link';
+import { Fade } from "react-awesome-reveal";
+
 
 const Topic = ({ slug }: { slug: string }) => {
   const topics = [
@@ -33,8 +35,9 @@ const Topic = ({ slug }: { slug: string }) => {
           Back
         </Link>
         {/* Header Card */}
+        <Fade triggerOnce>
         <div className="bg-transparent border rounded-3xl p-6 flex flex-col md:flex-row gap-6 items-end">
-  <div className="flex-1">
+      <div className="flex-1">
     <h1
       className="text-[#0A4B3F] text-4xl font-serif transition-all duration-300 ease-in-out hover:scale-105"
     >
@@ -53,9 +56,11 @@ const Topic = ({ slug }: { slug: string }) => {
     />
   </div>
 </div>
+</Fade>
 
 
         {/* Questions Section */}
+        <Fade triggerOnce>
         <div className="space-y-6">
           <p className="text-[#0A4B3F] text-xl">
             Hey dheeraj, let's start with a few questions to get the creative juices flowing.
@@ -65,6 +70,7 @@ const Topic = ({ slug }: { slug: string }) => {
             <p className="text-[#0A4B3F] text-xl">Do you have any specific characters or settings in mind?</p>
           </div>
         </div>
+        </Fade>
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
