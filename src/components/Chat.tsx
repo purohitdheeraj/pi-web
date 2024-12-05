@@ -180,7 +180,7 @@ function Chat({ isTopicPage }: { isTopicPage?: boolean }) {
         </div>
       </div>
 
-      <div className="px-5 mt-4 py-6 w-full geist-sans text-sm mx-auto max-w-1.5xl 2xl:max-w-[47rem]">
+      <div className="px-5 py-6 w-full geist-sans text-sm mx-auto max-w-1.5xl 2xl:max-w-[47rem]">
         <div>
           <div className="t-label mx-auto text-center text-primary-foreground">
             By using Pi, you agree to our{" "}
