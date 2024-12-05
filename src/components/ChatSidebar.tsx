@@ -40,7 +40,7 @@ const ChatSidebar = () => {
 
       {/* Mobile Sidebar */}
       {isMobileSidebarOpen && (
-        <div className="fixed overflow-auto no-scrollbar mt-4 inset-0 border shadow-lg bg-[#F7EFE3] rounded-l-2xl rounded-r-2xl z-50 p-6 pt-16 ">
+        <div className="fixed  mt-4 inset-0 border shadow-2xl bg-[#F7EFE3] rounded-l-3xl rounded-r-3xl z-50 p-6 pt-16 ">
           <Button
             variant="ghost"
             size="icon"
@@ -53,8 +53,10 @@ const ChatSidebar = () => {
             {greeting},
             <span className="italic ml-1">Mani</span>
           </h2>
+          <div className="overflow-auto no-scrollbar h-full py-1">
           <HistoryCard />
           <Topics />
+          </div>
         </div>
       )}
 

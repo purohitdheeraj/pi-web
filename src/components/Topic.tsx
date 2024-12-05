@@ -63,7 +63,7 @@ const Topic = ({ slug }: { slug: string }) => {
         <Fade triggerOnce>
         <div className="space-y-6">
           <p className="text-[#0A4B3F] text-xl">
-            Hey dheeraj, let's start with a few questions to get the creative juices flowing.
+            Hey Mani, let's start with a few questions to get the creative juices flowing.
           </p>
           <div className="space-y-4">
             <p className="text-[#0A4B3F] text-xl">What genre of story would you like to write?</p>
