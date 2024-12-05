@@ -11,6 +11,13 @@
 
 ---
 
+## Browser Compatible
+- [x] Chrome
+- [x] Firefox 
+- [x] Safari (17.3)
+- [x] Opera (latest - 115)
+- [ ] Edge (not comaptible)
+
 ## Key Pointer
 ### 1. open ai interface
 ![image](https://github.com/user-attachments/assets/85f87089-9ff8-49c2-a860-a00e47f80fb1)
