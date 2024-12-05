@@ -16,7 +16,7 @@
 - [x] Firefox 
 - [x] Safari (17.3)
 - [x] Opera (latest - 115)
-- [ ] Edge (not comaptible)
+- [x] Edge (131)
 
 ## Key Pointer
 ### 1. open ai interface
