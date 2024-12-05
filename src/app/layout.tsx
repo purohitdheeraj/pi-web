@@ -48,7 +48,7 @@ export default function RootLayout({
             <Button
             variant="ghost"
             size="icon"
-            className="absolute text-primary-foreground p-0 z-50 top-4 right-4 rounded-full"
+            className="absolute text-primary-foreground p-0 z-40 top-4 right-4 rounded-full"
             >
               <VolumeX className="shrink-0 w-10 h-10" fill="#877c6c" strokeWidth={1} />
             </Button>
