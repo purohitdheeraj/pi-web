@@ -5,6 +5,7 @@ import HistoryCard from "@/components/HistoryCard";
 import { X , Sparkles} from 'lucide-react';
 import { Button } from "./ui/button";
 
+
 const ChatSidebar = () => {
   const [greeting, setGreeting] = useState<string>("");
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false); 

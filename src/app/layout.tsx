@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import ChatSidebar from "@/components/ChatSidebar";
-
+import { ChatProvider} from "@/context/ChatContext";
 import "./globals.css";
 import { Button } from "@/components/ui/button";
 import { VolumeX } from "lucide-react";
@@ -11,7 +11,6 @@ const geistSans = localFont({
   variable: "--font-geist-sans",
   weight: "100 900",
 });
-
 
 const alpina = localFont({
   src: './fonts/alpina.otf',
@@ -35,25 +34,27 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
+
   return (
     <html lang="en">
       <link rel="icon" href="/favicon.svg" sizes="any" />
       <body
         className={`${alpina.variable} ${alpinaDense.variable} ${geistSans.variable} antialiased overflow-y-auto`}
       >
-        <div className='flex  alpina h-full w-full overflow-y-auto'>
-          <ChatSidebar />
-
-          {children}
+       <ChatProvider> 
+          <div className="flex alpina h-full w-full overflow-y-auto">
+            <ChatSidebar />
+            {children}            
             <Button
-            variant="ghost"
-            size="icon"
-            className="absolute text-primary-foreground p-0 z-40 top-4 right-4 rounded-full"
+              variant="ghost"
+              size="icon"
+              className="absolute text-primary-foreground p-0 z-40 top-4 right-4 rounded-full"
             >
               <VolumeX className="shrink-0 w-10 h-10" fill="#877c6c" strokeWidth={1} />
             </Button>
-        </div>
-
+          </div>
+        </ChatProvider>
       </body>
     </html>
   );
