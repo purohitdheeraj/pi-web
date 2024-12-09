@@ -1,4 +1,3 @@
-"use client";
 import { useRef, useState, useEffect, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -20,6 +19,7 @@ function Chat({ isTopicPage }: { isTopicPage?: boolean }) {
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const focusedRef = useRef(false);
   const isTopicRef = useRef(isTopicPage);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -29,6 +29,24 @@ function Chat({ isTopicPage }: { isTopicPage?: boolean }) {
     }, 100);
     return () => clearTimeout(timeout);
   }, [chatState.messages]);
+
+  // Adjust textarea height dynamically, with a max height
+  useEffect(() => {
+    const textarea = textareaRef.current;
+    if (textarea) {
+      textarea.style.height = "auto"; // Reset height
+      textarea.style.height = `${textarea.scrollHeight}px`; // Set height to scrollHeight
+
+      // Set a max height to prevent it from growing too large
+      const maxHeight = 150; // Set your max height here (e.g., 150px)
+      if (textarea.scrollHeight > maxHeight) {
+        textarea.style.height = `${maxHeight}px`;
+        textarea.style.overflowY = "auto"; // Enable scroll if exceeds maxHeight
+      } else {
+        textarea.style.overflowY = "hidden"; // Hide scroll if it's within the maxHeight
+      }
+    }
+  }, [chatState.value]);
 
   const handleChange = (evt: React.ChangeEvent<HTMLTextAreaElement>) => {
     isTopicRef.current = false;
@@ -125,10 +143,8 @@ function Chat({ isTopicPage }: { isTopicPage?: boolean }) {
         <div
           ref={chatContainerRef}
           className="relative min-h-52 h-52 mt-4 text-[22px] w-full flex flex-col overflow-y-auto no-scrollbar pt-16 flex-grow space-y-4 px-4 border-t-transparent"
-          >
-         <Fade  triggerOnce>
-          {messagesMemo}
-          </Fade>
+        >
+          <Fade triggerOnce>{messagesMemo}</Fade>
         </div>
       )}
 
@@ -147,7 +163,8 @@ function Chat({ isTopicPage }: { isTopicPage?: boolean }) {
           onBlur={() => (focusedRef.current = false)}
         >
           <Textarea
-            className="flex-grow text-2xl outline-none shadow-none h-full resize-none bg-white overflow-hidden"
+            ref={textareaRef}
+            className="flex-grow text-2xl outline-none shadow-none h-auto resize-none bg-white overflow-hidden"
             rows={1}
             placeholder="Talk with Pi"
             onChange={handleChange}
