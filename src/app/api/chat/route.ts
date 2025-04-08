@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { messages, message } = body;
+    const { messages, message, model } = body;
 
     const response = await fetch("https://api.two.ai/v2/chat/completions", {
       method: "POST",
@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
         Authorization: `Bearer ${process.env.SUTRA_API_KEY}`,
       },
       body: JSON.stringify({
-        model: "sutra-v2",
+        model: model ?? "sutra-v2",
         messages: [...messages, { role: "user", content: message }],
       }),
     });
