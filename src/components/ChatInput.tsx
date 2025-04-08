@@ -55,7 +55,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({ onSend }) => {
           ref={textareaRef}
           className="flex-grow text-2xl outline-none shadow-none h-auto resize-none bg-white overflow-hidden"
           rows={1}
-          placeholder="Talk with Pi"
+          placeholder="Talk with Sutra"
           onChange={(e) => setValue(e.target.value)}
           onKeyPress={handleKeyPress}
           value={value}

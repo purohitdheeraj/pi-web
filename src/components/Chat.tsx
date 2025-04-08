@@ -10,14 +10,14 @@ export default function Chat() {
     addMessage({ role: "user", content: message });
 
     try {
-      const res = await fetch("https://api.openai.com/v1/chat/completions", {
+      const res = await fetch("https://api.two.ai/v2/chat/completions", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.NEXT_PUBLIC_OPEN_AI_API_KEY}`,
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_SUTRA_API_KEY}`,
         },
         body: JSON.stringify({
-          model: "gpt-3.5-turbo",
+          model: "sutra-v2", // ✅ use sutra model
           messages: [...messages, { role: "user", content: message }],
         }),
       });
@@ -28,6 +28,7 @@ export default function Chat() {
         content: data.choices?.[0]?.message?.content || "No response",
       });
     } catch (error) {
+      console.error(error);
       addMessage({
         role: "assistant",
         content: "Something went wrong. Please try again.",
@@ -35,34 +36,35 @@ export default function Chat() {
     }
   };
 
+
   return (
     <div className="relative flex flex-col h-full w-full">
       <div className="mt-auto px-4 py-2 space-y-4">
-      <ChatInput onSend={handleSend} />
+        <ChatInput onSend={handleSend} />
 
-      <div className="px-5 py-6 w-full geist-sans text-sm mx-auto max-w-1.5xl 2xl:max-w-[47rem]">
-        <div>
-          <div className="t-label mx-auto text-center text-primary-foreground">
-            By using Pi, you agree to our{" "}
-            <a
-              href="https://pi.ai/policy#terms"
-              target="_blank"
-              className="text-primary-600 underline text-secondary"
-            >
-              Terms
-            </a>{" "}
-            and{" "}
-            <a
-              href="https://pi.ai/policy#privacy"
-              target="_blank"
-              className="text-primary-600 underline text-secondary"
-            >
-              Privacy Policy
-            </a>
-            .
+        <div className="px-5 py-6 w-full geist-sans text-sm mx-auto max-w-1.5xl 2xl:max-w-[47rem]">
+          <div>
+            <div className="t-label mx-auto text-center text-primary-foreground">
+              By using Pi, you agree to our{" "}
+              <a
+                href="https://pi.ai/policy#terms"
+                target="_blank"
+                className="text-primary-600 underline text-secondary"
+              >
+                Terms
+              </a>{" "}
+              and{" "}
+              <a
+                href="https://pi.ai/policy#privacy"
+                target="_blank"
+                className="text-primary-600 underline text-secondary"
+              >
+                Privacy Policy
+              </a>
+              .
+            </div>
           </div>
         </div>
-      </div>
       </div>
     </div>
   );
