@@ -10,19 +10,19 @@ export default function Chat() {
     addMessage({ role: "user", content: message });
 
     try {
-      const res = await fetch("https://api.two.ai/v2/chat/completions", {
+      const res = await fetch("/api/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.NEXT_PUBLIC_SUTRA_API_KEY}`,
         },
         body: JSON.stringify({
-          model: "sutra-v2", // ✅ use sutra model
-          messages: [...messages, { role: "user", content: message }],
+          messages,
+          message,
         }),
       });
 
       const data = await res.json();
+
       addMessage({
         role: "assistant",
         content: data.choices?.[0]?.message?.content || "No response",
@@ -35,6 +35,7 @@ export default function Chat() {
       });
     }
   };
+
 
 
   return (
